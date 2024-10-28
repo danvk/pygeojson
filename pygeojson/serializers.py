@@ -41,10 +41,8 @@ def feature(o: Feature) -> Any:
     r: Any = {"type": o.type, **o.extra_attributes}
     if o.id:
         r["id"] = o.id
-    if o.geometry:
-        r["geometry"] = geometry(o.geometry)
-    if o.properties is not {}:
-        r["properties"] = o.properties
+    r["geometry"] = geometry(o.geometry) if o.geometry else None
+    r["properties"] = o.properties
     if o.bbox:
         r["bbox"] = boundingbox(o.bbox)
     return r

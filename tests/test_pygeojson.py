@@ -54,7 +54,11 @@ def test_feature_with_id(load_json):
 def test_feature_with_null_geom(load_json):
     o: Feature = load_json("feature_with_null_geom.json")
     assert o == Feature(
-        id=None, bbox=None, type="Feature", geometry=None, properties={},
+        id=None,
+        bbox=None,
+        type="Feature",
+        geometry=None,
+        properties={},
     )
 
 
@@ -76,7 +80,11 @@ def test_feature_with_props(load_json):
 def test_feature_without_geom(load_json):
     o: Feature = load_json("feature_without_geom.json")
     assert o == Feature(
-        id=None, bbox=None, type="Feature", geometry=None, properties={},
+        id=None,
+        bbox=None,
+        type="Feature",
+        geometry=None,
+        properties={},
     )
 
 
@@ -218,6 +226,10 @@ def test_loads():
 def test_dumps():
     assert (
         dumps(Point((1.0, 2.0))) == """{"type": "Point", "coordinates": [1.0, 2.0]}"""
+    )
+    assert (
+        dumps(Feature(id="123", geometry=None))
+        == """{"type": "Feature", "id": "123", "geometry": null, "properties": {}}"""
     )
 
 
